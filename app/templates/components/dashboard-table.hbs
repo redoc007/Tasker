@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            {{#each model.columns as |column|}}
+                <th>
+                    {{column.name}}
+                </th>
+            {{/each}}
+        </tr>
+    </thead>
+    <tbody>
+        {{#each model.data as |row|}}
+            <tr>
+                <td>
+                    {{#link-to 'taskDetails' row.id}}
+                        {{row.title}}
+                    {{/link-to}}
+                </td>
+                {{#each row.values as |item|}}
+                    <td>{{item.value}}</td>
+                {{/each}}
+                <td>{{row.total}}</td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>

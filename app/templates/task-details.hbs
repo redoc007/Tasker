@@ -1,0 +1,40 @@
+<div class="row display-75">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h4>{{model.title}}</h4>
+        <div>
+            Status is 
+            {{#if model.isComplete}}
+                Completed
+            {{else}}
+                In progress
+            {{/if}}
+        </div>
+        <form class="display-75">
+            <div class="col-md-12">
+                <div class="input-group">
+                    {{input value=newTimeLog class='form-control' placeholder='Hours in decimal. E.g: 7.7'}}
+                    <span class="input-group-btn">
+                        <button class='btn btn-primary' {{action 'addTimeLog'}} disabled={{canDisable}}>Add Time</button>
+                    </span>
+                </div>
+                {{#if showDecimalError}}
+                    <div style="color:red;">Enter a valid positive decimal number for hours</div>
+                {{/if}}
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row display-75">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        {{time-table model=model.timeSpent}}
+      </div>
+    </div>
+  </div>
+</div>

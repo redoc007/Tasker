@@ -1,0 +1,23 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Task</th>
+            <th>Total Time Spent</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each model as |row|}}
+            <tr>
+                <td>{{row.id}}</td>
+                <td>
+                    {{input type="checkbox" checked=row.isComplete}}
+                    {{#link-to 'taskDetails' row}}
+                        {{row.title}}
+                    {{/link-to}}
+                </td>
+                <td>{{row.totalTime}}</td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>

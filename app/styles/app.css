@@ -1,0 +1,19 @@
+body {
+    padding-top: 70px;
+}
+
+.form-task {
+	max-width: 50%;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-task-heading {
+	margin-bottom: 10px;
+}
+
+.display-75 {
+	max-width: 75%;
+    padding: 10px;
+    margin: 0 auto;
+}
