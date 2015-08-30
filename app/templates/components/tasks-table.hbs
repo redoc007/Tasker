@@ -11,7 +11,7 @@
             <tr>
                 <td>{{row.id}}</td>
                 <td>
-                    {{input type="checkbox" checked=row.isComplete}}
+                    {{input type="checkbox" disabled=true checked=row.isComplete}}
                     {{#link-to 'taskDetails' row}}
                         {{row.title}}
                     {{/link-to}}

@@ -1,28 +1,33 @@
 import Ember from "ember";
-import taskItem from "../models/task-item";
 
+/*
+ * Controller for tasks. Handles creation of new task.
+ */
 export default Ember.Controller.extend({
 	newTaskTitle: null,
+	
+	//Used to show a message when no tasks are present
+	isEmptyModel: Ember.computed.empty('model'),
+	
+	//Used to disable task creation if string is empty or only contains white spaces
 	canDisable: Ember.computed('newTaskTitle', function() {
-	    return Ember.isEmpty(this.get('newTaskTitle'));
+	    return Ember.isEmpty(this.get('newTaskTitle')) || (this.get('newTaskTitle').trim() === "");
 	}),
+	
 	actions: {
+		/*
+		 * Function to create a task with title and default
+		 * values and reset the newTaskTitle
+		 */
 		createTask: function() {
 			var taskTitle = this.get('newTaskTitle').trim();
-			var newTask = taskItem.create({
+			var newTask = {
 				title: taskTitle,
-				timeSpent: Ember.A()
-			});
+				timeSpent: []
+			};
 			this.set('newTaskTitle', null);
-			
-			console.log("new Entry is ", newTask);
-			//TODO
-			$.ajax('http://localhost:3000/tasks/', newTask, {
-			  method: 'POST'
-			}).then(function(data) {
-			  console.log("saved data is ", data);
-			  // transnsit to that task
-			});
+			var task = this.store.createRecord('task', newTask);
+			task.save();
 		}
 	}
 });

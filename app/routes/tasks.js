@@ -1,12 +1,8 @@
 import Ember from "ember";
- 
+
 export default Ember.Route.extend({
 	model : function() {
-		return $.ajax('http://localhost:3000/tasks', {
-		  method: 'GET'
-		}).then(function(data) {
-			return data;
-		});
+		return this.store.findAll('task');
 	},
 	actions: {
 		goToTask : function(item) {
