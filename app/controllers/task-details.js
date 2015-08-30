@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
 	canDisable: Ember.computed('newTimeLog', function() {
 		var shouldDisable = false,
 			timeLog = this.get('newTimeLog');
-		if (Ember.isEmpty(timeLog)) {
+		if (Ember.isEmpty(timeLog) || Ember.isBlank(timeLog)) {
 			this.set('showDecimalError', false);
 			shouldDisable = true;
 		} else {
